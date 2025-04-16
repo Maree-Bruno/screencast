@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use JetBrains\PhpStorm\NoReturn;
 use Tecgdcs\Response;
 use Tecgdcs\Validator;
+use Tecgdcs\View;
 
 class LossDeclarationController
 {
@@ -17,7 +18,8 @@ class LossDeclarationController
         $countries = Country::all();
         $pet_types = PetType::all();
 
-        require VIEW_DIR.'/lossdeclaration/create.php';
+        //require VIEW_DIR.'/lossdeclaration/create.blade.php';
+        View::make('lossdeclaration.create', compact('countries', 'pet_types'));
     }
 
     #[NoReturn]

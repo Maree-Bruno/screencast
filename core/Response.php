@@ -7,13 +7,9 @@ use JetBrains\PhpStorm\NoReturn;
 class Response
 {
     public const BAD_REQUEST = 400;
-
     public const NOT_FOUND = 404;
-
     public const SEE_OTHER = 303;
-
     public const SERVER_ERROR = 500;
-
     public const UNAUTHORIZED = 401;
 
     #[NoReturn]
