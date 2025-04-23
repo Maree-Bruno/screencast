@@ -61,3 +61,10 @@ Capsule::schema()->create('losses', function ($table) {
         ->constrained();
     $table->timestamps();
 });
+Capsule::schema()->dropIfExists('users');
+Capsule::schema()->create('users', function ($table) {
+    $table->id();
+    $table->string('email')->unique();
+    $table->string('password');
+    $table->timestamps();
+});

@@ -16,7 +16,7 @@ class Response
     public static function abort($code = self::NOT_FOUND): void
     {
         http_response_code($code);
-        require VIEW_DIR."/codes/{$code}.php";
+        View::make("codes.{$code}");
         exit;
     }
 

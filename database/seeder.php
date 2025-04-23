@@ -11,15 +11,17 @@ use Animal\Models\Loss;
 use Animal\Models\Pet;
 use Animal\Models\PetOwner;
 use Animal\Models\PetType;
+use Animal\Models\User;
 
 $faker = Faker\Factory::create();
 
 $countries_csv = __DIR__.'/countries.csv';
+//Ouvrir le fichier
 $file_handle = fopen($countries_csv, 'rb');
 // Récupérer les entêtes du CSV
 $headers = fgetcsv($file_handle, 1000, escape: '');
 // Mettre en lien les langues supportées par l'app avec les entêtes qui leur correspondent
-$available_languages = ['EN' => 'name.common', 'FR' => 'translations.fra.common', 'IT' => 'translations.ita.common'];
+$available_languages = ['EN' => 'name.common', 'FR' => 'translations.fra.common', 'IT' => 'translations.ita.common', 'PT' => 'translations.por.common'];
 // Récupérer l'indice de la colonne qui contient le code cca2
 $cca2_index = array_find_key($headers, fn($item) => $item === 'cca2');
 // Récupérer les indices des colonnes qui contiennent les traductions utiles dans notre app
@@ -84,7 +86,7 @@ for ($i = 1; $i <= 10; $i++) {
 Pet::query()->truncate();
 for ($i = 1; $i <= 10; $i++) {
     Pet::create([
-        'name' => $faker->name(),
+        'name' => $faker->firstName(),
         'chip' => $faker->randomNumber(6, true),
         'gender' => $faker->boolean(),
         'age' => $faker->randomNumber(1),
@@ -105,3 +107,9 @@ for ($i = 1; $i <= 10; $i++) {
         'pet_owner_id' => PetOwner::all()->random()->id,
     ]);
 }
+
+User::query()->truncate();
+User::create([
+    'email' => 'brunome638@gmail.com',
+    'password'=>password_hash('password', PASSWORD_BCRYPT),
+]);

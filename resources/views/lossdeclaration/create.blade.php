@@ -1,4 +1,4 @@
-@component('components.layouts.app', ['title'=> 'J’ai perdu mon animal'])
+@component('layouts.app', ['title'=> 'J’ai perdu mon animal'])
     <h1>Déclaration de perte d'animal</h1>
     <form action="/loss-declaration"
           method="post">

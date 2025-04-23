@@ -67,6 +67,6 @@ class LossDeclarationController
             Response::abort();
         }
         // Analyser la query string pour savoir quelle déclaration afficher
-        require VIEW_DIR.'/lossdeclaration/show.php';
+        require VIEW_DIR.'/lossdeclaration/show.blade.php';
     }
 }
